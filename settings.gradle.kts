@@ -1,4 +1,4 @@
-rootProject.name = "cobblemon-unimplementeditems"
+rootProject.name = "cobblemon-unimplemented-items"
 
 pluginManagement {
     repositories {
