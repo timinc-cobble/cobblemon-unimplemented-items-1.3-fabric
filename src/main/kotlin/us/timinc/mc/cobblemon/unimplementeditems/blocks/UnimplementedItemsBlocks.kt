@@ -6,6 +6,7 @@ import net.fabricmc.fabric.api.item.v1.FabricItemSettings
 import net.fabricmc.fabric.api.`object`.builder.v1.block.FabricBlockSettings
 import net.minecraft.core.Registry
 import net.minecraft.world.item.BlockItem
+import net.minecraft.world.item.CreativeModeTab
 import net.minecraft.world.level.block.Block
 import net.minecraft.world.level.material.Material
 import us.timinc.mc.cobblemon.unimplementeditems.UnimplementedItems
@@ -16,7 +17,11 @@ object UnimplementedItemsBlocks {
     fun register() {
         Registry.register(Registry.BLOCK, UnimplementedItems.myResourceLocation("repel"), REPEL)
         Registry.register(
-            Registry.ITEM, UnimplementedItems.myResourceLocation("repel"), BlockItem(REPEL, FabricItemSettings())
+            Registry.ITEM, UnimplementedItems.myResourceLocation("repel"), BlockItem(
+                REPEL, FabricItemSettings().tab(
+                    CreativeModeTab.TAB_BUILDING_BLOCKS
+                )
+            )
         )
     }
 }
