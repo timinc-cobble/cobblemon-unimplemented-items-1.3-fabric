@@ -8,6 +8,7 @@ import dev.architectury.registry.fuel.FuelRegistry
 import net.fabricmc.fabric.api.item.v1.FabricItemSettings
 import net.fabricmc.fabric.api.loot.v2.LootTableEvents
 import net.fabricmc.fabric.api.loot.v2.LootTableSource
+import net.fabricmc.fabric.api.registry.CompostingChanceRegistry
 import net.minecraft.core.Registry
 import net.minecraft.resources.ResourceLocation
 import net.minecraft.server.packs.resources.ResourceManager
@@ -120,5 +121,6 @@ object UnimplementedItemsItems {
         Registry.register(Registry.ITEM, UnimplementedItems.myResourceLocation("power_anklet"), POWER_ANKLET)
 
         FuelRegistry.register(100, DRY_ROOT)
+        CompostingChanceRegistry.INSTANCE.add(DRY_ROOT, 0.3F)
     }
 }
