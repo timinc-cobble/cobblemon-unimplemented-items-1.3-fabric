@@ -4,11 +4,13 @@ import com.cobblemon.mod.common.api.events.CobblemonEvents
 import net.fabricmc.api.ModInitializer
 import net.minecraft.resources.ResourceLocation
 import us.timinc.mc.cobblemon.unimplementeditems.blocks.UnimplementedItemsBlocks
+import us.timinc.mc.cobblemon.unimplementeditems.config.BaseConfig
 import us.timinc.mc.cobblemon.unimplementeditems.items.PostBattleItem
 import us.timinc.mc.cobblemon.unimplementeditems.items.UnimplementedItemsItems
 
 object UnimplementedItems : ModInitializer {
     const val MOD_ID = "unimplemented_items"
+    var config: BaseConfig = BaseConfig.Builder.load()
 
     override fun onInitialize() {
         UnimplementedItemsItems.register()
