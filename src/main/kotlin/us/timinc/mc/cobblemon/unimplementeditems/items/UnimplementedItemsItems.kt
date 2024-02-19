@@ -20,6 +20,7 @@ import net.minecraft.world.level.storage.loot.LootPool
 import net.minecraft.world.level.storage.loot.LootTable
 import net.minecraft.world.level.storage.loot.LootTables
 import net.minecraft.world.level.storage.loot.entries.LootItem
+import us.timinc.mc.cobblemon.unimplementeditems.Loot
 import us.timinc.mc.cobblemon.unimplementeditems.UnimplementedItems
 
 object UnimplementedItemsItems {
@@ -50,21 +51,7 @@ object UnimplementedItemsItems {
 
     fun register() {
         LootTableEvents.MODIFY.register(LootTableEvents.Modify { _: ResourceManager, _: LootTables, id: ResourceLocation, tableBuilder: LootTable.Builder, source: LootTableSource ->
-            if (source.isBuiltin && id == BuiltInLootTables.FISHING_TREASURE) {
-                val unimplementedItemsPool =
-                    LootPool.Builder().with(LootItem.lootTableItem { BOTTLE_CAP }.setWeight(10).build())
-                        .with(LootItem.lootTableItem { BOTTLE_CAP_GOLD }.setWeight(1).build())
-                        .with(LootItem.lootTableItem { ABILITY_PATCH }.setWeight(1).build())
-                        .with(LootItem.lootTableItem { Items.AIR }.setWeight(88).build())
-
-                tableBuilder.withPool(unimplementedItemsPool)
-            }
-
-            if (source.isBuiltin && id == Blocks.GRASS.lootTable) {
-                val dryRootPool = LootPool.lootPool().with(LootItem.lootTableItem { DRY_ROOT }.setWeight(1).build())
-                    .with(LootItem.lootTableItem { Items.AIR }.setWeight(9).build())
-                tableBuilder.withPool(dryRootPool)
-            }
+            Loot.register(source, id, tableBuilder)
         })
 
         Registry.register(
